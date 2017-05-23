@@ -1,15 +1,11 @@
 <?php
-if (isset($_GET['twid'])) { // GET要大寫
-
+if (isset($_GET['twid'])){
     $twid = $_GET['twid'];
-
-    if (preg_match('/^[A-Z][12][0-9]{8}$/', $twid) > 0) {
-
+    if (preg_match('/^[A-Z][12][0-9]{8}$/', $twid)>0){
 
         $n12s = substr($twid, 0, 1);
-
+        //echo $n12s;
         $letters = 'ABCDEFGHJKLMNPQRSTUVXYWZIO';
-
         $n12 = strpos($letters, $n12s) + 10;
         $n1 = (int)($n12 / 10);
         $n2 = $n12 % 10;
@@ -22,47 +18,19 @@ if (isset($_GET['twid'])) { // GET要大寫
         $n9 = substr($twid, 7, 1);
         $n10 = substr($twid, 8, 1);
         $n11 = substr($twid, 9, 1);
-
-
-        $sum = $n1 * 1 + $n2 * 9 + $n3 * 8 + $n4 * 7 + $n5 * 6 +
-            $n6 * 5 + $n7 * 4 + $n8 * 3 + $n9 * 2 + $n10 * 1 + $n11 *1;
-        if ($sum % 10 == 0) {
+        $sum = $n1*1 + $n2*9 + $n3*8 + $n4*7 + $n5*6 +
+            $n6*5 + $n7*4 + $n8*3 + $n9*2 + $n10*1 + $n11*1;
+        if ($sum %10 == 0){
             echo 'OK';
-        } else {
+        }else{
             echo 'XX';
         }
-//        echo $n12;
-    } else {
+    }else{
         echo 'XX';
-
     }
-
 }
 ?>
-
 <form>
-
-  <input type="text" name="twid" value="<?php echo $twid ?>"/>
-    <input type="submit" value="check" /><?php echo $n12 ?>
-
+    <input type="text" name="twid" />
+    <input type="submit" value="check" />
 </form>
-
-
-
-<!--//$str="AA";-->
-<!--//$reg=;-->
-<!--//$r=;-->
-<!--//-->
-<!--//echo $r;-->
-
-
-
-
-
-
-
-
-
-
-
-
